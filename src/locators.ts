@@ -12,10 +12,9 @@ export const locators = {
         'fillUserProfileButton': by.css('choose-user-type button[type="submit"]'),
         'surnameInput': by.name('surname'),
         'nameInput': by.name('name'),
-        'middleInput': by.name('middlename'),
+        'middleNameInput': by.name('middlename'),
         'mobileInput': by.name('mobile'),
         'submitMobileButton': by.css('button[type="submit"]'),
-        'argeePersonalDataCheckbox': by.name('agree_personal_data'),
         'commonFormError': by.exactBinding("'common-form-error' | translate"),
 
     }

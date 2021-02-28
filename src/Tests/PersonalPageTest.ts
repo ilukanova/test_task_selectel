@@ -31,10 +31,24 @@ describe('Personal page test scenario', () => {
     });
         
     it('Check if one symbol input in name field', async () => {
-        await completeRegPage.testInputOneSymbolInNameField('1');
+        await completeRegPage.testInputOneSymbolInNameField('2');
 
         let errorText = await completeRegPage.getErrorText('err_pattern_name');
         expect(errorText).toEqual('Поле может содержать только кириллицу, пробел или тире, и должно быть не короче двух символов');
+    });
+
+    it('Check if one symbol input in middlename field', async () => {
+        await completeRegPage.testInputOneSymbolInMiddleField('3');
+
+        let errorText = await completeRegPage.getErrorText('err_pattern_middlename');
+        expect(errorText).toEqual('Поле может содержать только кириллицу, пробел или тире, и должно быть не короче двух символов');
+    });
+
+    it('Check if incorrect value input in mobile field', async () => {
+        await completeRegPage.testInputIncorrectValueInMobileField('567574');
+
+        let errorText = await completeRegPage.getErrorText('err_parse_mobile');
+        expect(errorText).toEqual('Убедитесь, что номер введен верно');
     });
 
     it('Check if click submit button with empty fields', async () => {

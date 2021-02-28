@@ -9,10 +9,9 @@ export class CompleteRegPage extends BasePage{
     private fillUserProfileButton: ElementFinder = element(locators.CompleteRegPage.fillUserProfileButton);
     private surnameInput: ElementFinder = element(locators.CompleteRegPage.surnameInput);
     private nameInput: ElementFinder = element(locators.CompleteRegPage.nameInput);
-    private middleInput: ElementFinder = element(locators.CompleteRegPage.middleInput);
+    private middleNameInput: ElementFinder = element(locators.CompleteRegPage.middleNameInput);
     private mobileInput: ElementFinder = element(locators.CompleteRegPage.mobileInput);
     private submitMobileButton: ElementFinder = element(locators.CompleteRegPage.submitMobileButton);
-    private argeePersonalDataCheckbox: ElementFinder = element(locators.CompleteRegPage.argeePersonalDataCheckbox);
     public commonFormError: ElementFinder = element(locators.CompleteRegPage.commonFormError);
 
     public continueReg = async () => {
@@ -35,6 +34,16 @@ export class CompleteRegPage extends BasePage{
 
     public testInputOneSymbolInNameField = async (name: string) => {
         await this.nameInput.sendKeys(name);
+        await this.blur();
+    }
+
+    public testInputOneSymbolInMiddleField = async (middlename: string) => {
+        await this.middleNameInput.sendKeys(middlename);
+        await this.blur();
+    }
+
+    public testInputIncorrectValueInMobileField = async (mobile: string) => {
+        await this.mobileInput.sendKeys(mobile);
         await this.blur();
     }
 
