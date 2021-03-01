@@ -1,6 +1,6 @@
-import { browser, by, element, protractor } from 'protractor';
-import { LoginPage } from "../Pages/LoginPage";
+import { browser } from 'protractor';
 import { CompleteRegPage } from "../Pages/CompleteRegPage";
+import { LoginPage } from "../Pages/LoginPage";
 
 const LOGIN = '148515';
 const PASSWORD = 'Qwerty123';
@@ -24,31 +24,52 @@ describe('Personal page test scenario', () => {
     });
 
     it('Check if one symbol input in surname field', async () => {
-        await completeRegPage.testInputOneSymbolInSurnameField('1');
+        await completeRegPage.testInputOneSymbolInSurnameField();
 
         let errorText = await completeRegPage.getErrorText('err_pattern_surname');
         expect(errorText).toEqual('Поле может содержать только кириллицу, пробел или тире, и должно быть не короче двух символов');
     });
         
     it('Check if one symbol input in name field', async () => {
-        await completeRegPage.testInputOneSymbolInNameField('2');
+        await completeRegPage.testInputOneSymbolInNameField();
 
         let errorText = await completeRegPage.getErrorText('err_pattern_name');
         expect(errorText).toEqual('Поле может содержать только кириллицу, пробел или тире, и должно быть не короче двух символов');
     });
 
     it('Check if one symbol input in middlename field', async () => {
-        await completeRegPage.testInputOneSymbolInMiddleField('3');
+        await completeRegPage.testInputOneSymbolInMiddleField();
 
         let errorText = await completeRegPage.getErrorText('err_pattern_middlename');
         expect(errorText).toEqual('Поле может содержать только кириллицу, пробел или тире, и должно быть не короче двух символов');
     });
 
     it('Check if incorrect value input in mobile field', async () => {
-        await completeRegPage.testInputIncorrectValueInMobileField('567574');
+        await completeRegPage.testInputIncorrectValueInMobileField();
 
         let errorText = await completeRegPage.getErrorText('err_parse_mobile');
         expect(errorText).toEqual('Убедитесь, что номер введен верно');
+    });
+
+    it('Check if non cyrillic symbols input in surname field', async () => {
+        await completeRegPage.testInputNonCyrillicSymbolsInSurnameField();
+
+        let errorText = await completeRegPage.getErrorText('err_pattern_surname');
+        expect(errorText).toEqual('Поле может содержать только кириллицу, пробел или тире, и должно быть не короче двух символов');
+    });
+
+    it('Check if non cyrillic symbols input in rname field', async () => {
+        await completeRegPage.testInputNonCyrillicSymbolsInNameField();
+
+        let errorText = await completeRegPage.getErrorText('err_pattern_name');
+        expect(errorText).toEqual('Поле может содержать только кириллицу, пробел или тире, и должно быть не короче двух символов');
+    });
+
+    it('Check if non cyrillic symbols input in middlename field', async () => {
+        await completeRegPage.testInputNonCyrillicSymbolsInMiddleField();
+
+        let errorText = await completeRegPage.getErrorText('err_pattern_middlename');
+        expect(errorText).toEqual('Поле может содержать только кириллицу, пробел или тире, и должно быть не короче двух символов');
     });
 
     it('Check if click submit button with empty fields', async () => {

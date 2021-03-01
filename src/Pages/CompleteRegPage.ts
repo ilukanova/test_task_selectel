@@ -22,28 +22,42 @@ export class CompleteRegPage extends BasePage{
     public chooseAccountType = async () => {
         await this.waitElementPresent(this.argeementCheckbox);
         await this.argeementCheckbox.click();
-        //console.log(this.fillUserProfileButton);
         await this.waitElementClickable(this.fillUserProfileButton);
         await this.fillUserProfileButton.click();
     }
 
-    public testInputOneSymbolInSurnameField = async (surname: string) => {
-        await this.surnameInput.sendKeys(surname);
+    public testInputOneSymbolInSurnameField = async () => {
+        await this.surnameInput.sendKeys('а');
         await this.blur();
     }
 
-    public testInputOneSymbolInNameField = async (name: string) => {
-        await this.nameInput.sendKeys(name);
+    public testInputOneSymbolInNameField = async () => {
+        await this.nameInput.sendKeys('б');
         await this.blur();
     }
 
-    public testInputOneSymbolInMiddleField = async (middlename: string) => {
-        await this.middleNameInput.sendKeys(middlename);
+    public testInputOneSymbolInMiddleField = async () => {
+        await this.middleNameInput.sendKeys('в');
         await this.blur();
     }
 
-    public testInputIncorrectValueInMobileField = async (mobile: string) => {
-        await this.mobileInput.sendKeys(mobile);
+    public testInputNonCyrillicSymbolsInSurnameField = async () => {
+        await this.surnameInput.sendKeys('test123');
+        await this.blur();
+    }
+
+    public testInputNonCyrillicSymbolsInNameField = async () => {
+        await this.nameInput.sendKeys('test@#$%');
+        await this.blur();
+    }
+
+    public testInputNonCyrillicSymbolsInMiddleField = async () => {
+        await this.middleNameInput.sendKeys('test тест');
+        await this.blur();
+    }
+
+    public testInputIncorrectValueInMobileField = async () => {
+        await this.mobileInput.sendKeys('567574');
         await this.blur();
     }
 

@@ -24,7 +24,7 @@ export class BasePage {
         return errorEl.getText();
     }
 
-    public waitElementPresent = async (el: any, timeout: number = 5000) => {
+    public waitElementPresent = async (el: any, timeout: number = 10000) => {
         await browser.wait(this.EC.presenceOf(el), timeout);
     }
 
